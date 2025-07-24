@@ -7,6 +7,7 @@ import { environment } from '../environments/environment';
 import { ReactiveFormsModule } from '@angular/forms';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { AuthService } from './auth/services/auth.service';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -33,6 +34,7 @@ export const appConfig: ApplicationConfig = {
     importProvidersFrom(
       provideFirebaseApp(() => initializeApp(environment.firebase)),
       provideAuth(() => getAuth()),
+      provideFirestore(() => getFirestore()),
       ReactiveFormsModule,
       materialImports
     ),
