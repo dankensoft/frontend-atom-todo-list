@@ -1,17 +1,26 @@
-<h2>Iniciar Sesión</h2>
+<div class="auth-container">
+  <mat-card class="auth-card">
+    <mat-card-title>Iniciar Sesión</mat-card-title>
 
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-  <label>
-    Correo:
-    <input type="email" formControlName="email" />
-  </label>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" type="email" required />
+      </mat-form-field>
 
-  <label>
-    Contraseña:
-    <input type="password" formControlName="password" />
-  </label>
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Contraseña</mat-label>
+        <input matInput formControlName="password" type="password" required />
+      </mat-form-field>
 
-  <button type="submit" [disabled]="loading">Ingresar</button>
-</form>
+      <button mat-raised-button color="primary" class="full-width" type="submit">
+        Iniciar Sesión
+      </button>
+    </form>
 
-<div *ngIf="errorMessage" style="color: red">{{ errorMessage }}</div>
+    <div class="link-container">
+      <span>¿No tienes cuenta?</span>
+      <a href="/register">Regístrate</a>
+    </div>
+  </mat-card>
+</div>

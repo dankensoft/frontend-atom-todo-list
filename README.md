@@ -9,7 +9,9 @@ Siéntete libre de clonar este repositorio y utilizarlo como base para el desarr
 De igual manera puedes documentar dentro de este archivo todo lo que deseas contar sobre tu desarrollo, como por ejemplo, decisiones de diseño, problemas encontrados, etc.
 
 ## Comentarios sobre el desarrollo
-...
+Si en un caso falla el npm install
+Entonces importante ejecutar el siguiente comando luego de clonar el repositorio:
+npm install @angular/fire@7.6.1 firebase --legacy-peer-deps
 
 ## Development server
 

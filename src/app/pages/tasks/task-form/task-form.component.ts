@@ -1,16 +1,22 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TaskService } from '../../../tasks/services/task.service';
 import { Task } from '../../../models/task.model';
 import { switchMap } from 'rxjs/operators';
 import { of } from 'rxjs';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-task-form',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, FormsModule, MatCardModule, MatFormFieldModule, MatInputModule, MatCheckboxModule, MatButtonModule, MatIconModule],
   templateUrl: './task-form.component.html',
 })
 export class TaskFormComponent implements OnInit {
@@ -30,7 +36,6 @@ export class TaskFormComponent implements OnInit {
       completed: [false]
     });
 
-    // Detectar si es edición
     this.route.paramMap.pipe(
       switchMap(params => {
         const id = params.get('id');

@@ -1,4 +1,64 @@
-@import "assets/styles/theme";
+@use "assets/styles/theme" as theme;
+@use '@angular/material' as mat;
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Inter, "Helvetica Neue", sans-serif; }
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: Inter, "Helvetica Neue", sans-serif;
+  background-color: #fafafa;
+  color: #333;
+}
+
+// Asegura que los estilos de Angular Material se apliquen
+@include mat.all-component-themes(theme.$atom-challenge-fe-template-theme);
+
+// Ejemplo de cómo aplicar color usando tu palette
+a {
+  color: mat.get-color-from-palette(theme.$atom-challenge-fe-template-accent);
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+button {
+  font-family: inherit;
+}
+
+.auth-container,
+.page-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.auth-card,
+.task-card {
+  width: 100%;
+  max-width: 400px;
+  padding: 2rem;
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.link-container {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}

@@ -1,15 +1,21 @@
-<ul *ngIf="tasks.length; else noTasks">
-  <li *ngFor="let task of tasks">
-    <input
-      type="checkbox"
-      [(ngModel)]="task.done"
-      (change)="toggleDone(task)"
-    />
-    {{ task.title }}
-    <button (click)="deleteTask(task.id!)">Eliminar</button>
-  </li>
-</ul>
+<mat-card class="task-list-card">
+  <mat-card-title>Lista de Tareas</mat-card-title>
 
-<ng-template #noTasks>
-  <p>No hay tareas pendientes.</p>
-</ng-template>
+  <mat-list *ngIf="tasks.length; else noTasks">
+    <mat-list-item *ngFor="let task of tasks" class="task-item">
+      <mat-checkbox [(ngModel)]="task.done" (change)="toggleDone(task)">
+        {{ task.title }}
+      </mat-checkbox>
+      <span class="spacer"></span>
+      <button mat-icon-button color="warn" (click)="deleteTask(task.id!)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </mat-list-item>
+  </mat-list>
+
+  <ng-template #noTasks>
+    <mat-card-content>
+      <p>No hay tareas pendientes.</p>
+    </mat-card-content>
+  </ng-template>
+</mat-card>

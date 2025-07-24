@@ -1,25 +1,23 @@
-<h2>{{ isEdit ? 'Editar Tarea' : 'Nueva Tarea' }}</h2>
+<mat-card class="form-card">
+  <mat-card-title>{{ isEdit ? 'Editar Tarea' : 'Nueva Tarea' }}</mat-card-title>
 
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
-  <label>
-    Título:
-    <input type="text" formControlName="title" />
-  </label>
-  <br />
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="task-form">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Título</mat-label>
+      <input matInput type="text" formControlName="title" />
+    </mat-form-field>
 
-  <label>
-    Descripción:
-    <textarea formControlName="description"></textarea>
-  </label>
-  <br />
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Descripción</mat-label>
+      <textarea matInput formControlName="description"></textarea>
+    </mat-form-field>
 
-  <label>
-    <input type="checkbox" formControlName="completed" />
-    ¿Completada?
-  </label>
-  <br />
+    <mat-checkbox formControlName="completed">¿Completada?</mat-checkbox>
 
-  <button type="submit" [disabled]="form.invalid">
-    {{ isEdit ? 'Actualizar' : 'Crear' }}
-  </button>
-</form>
+    <div class="form-actions">
+      <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
+        {{ isEdit ? 'Actualizar' : 'Crear' }}
+      </button>
+    </div>
+  </form>
+</mat-card>
