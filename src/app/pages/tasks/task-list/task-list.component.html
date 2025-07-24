@@ -1,0 +1,15 @@
+<ul *ngIf="tasks.length; else noTasks">
+  <li *ngFor="let task of tasks">
+    <input
+      type="checkbox"
+      [(ngModel)]="task.done"
+      (change)="toggleDone(task)"
+    />
+    {{ task.title }}
+    <button (click)="deleteTask(task.id!)">Eliminar</button>
+  </li>
+</ul>
+
+<ng-template #noTasks>
+  <p>No hay tareas pendientes.</p>
+</ng-template>
